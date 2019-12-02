@@ -1,12 +1,14 @@
 //your variable declarations here
 Spaceship artoriaPendragon ;
 Star[] circleStar;
+ArrayList <Asteroids> a;
 public void setup() 
 {
   //your code here
   size(500,500);
   artoriaPendragon = new Spaceship();
   circleStar = new Star[500];
+  a = new ArrayList <Asteroids>();
   for(int i=0; i<circleStar.length; i++)
 	{
 		circleStar[i] = new Star();
@@ -75,9 +77,11 @@ public void keyPressed()
 	}
 	if(keyCode==72)
 	{
-
+		artoriaPendragon.setMyPointDirection((double)Math.random()*360+1);
+		artoriaPendragon.setCenterX((int)(Math.random()*500)+1);
+		artoriaPendragon.setCenterY((int)(Math.random()*500)+1);
 	}
-	System.out.println(artoriaPendragon.getMyPointDirection());
+	System.out.println(artoriaPendragon.getCenterX());
 
 }
 
