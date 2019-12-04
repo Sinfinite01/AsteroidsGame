@@ -2,28 +2,39 @@
 Spaceship artoriaPendragon ;
 Star[] circleStar;
 ArrayList <Asteroids> a;
+int numAster;
 public void setup() 
 {
   //your code here
-  size(500,500);
-  artoriaPendragon = new Spaceship();
-  circleStar = new Star[500];
-  a = new ArrayList <Asteroids>();
-  for(int i=0; i<circleStar.length; i++)
-	{
-		circleStar[i] = new Star();
-	}
+	  size(500,500);
+	  artoriaPendragon = new Spaceship();
+	  circleStar = new Star[500];
+	  numAster=10;
+	  a = new ArrayList <Asteroids>();
+	  for(int i=0; i<circleStar.length; i++)
+		{
+			circleStar[i] = new Star();
+		}
+	  for(int i=0; i<numAster; i++)
+	  {
+	  	a.add(new Asteroids());
+	  }
 }
 public void draw() 
 {
   //your code here
-  background(0);
+	background(0);
   for(int i=0; i<circleStar.length; i++)
   {
  	circleStar[i].show();
   }
-  artoriaPendragon.show();
-  artoriaPendragon.move();
+	artoriaPendragon.show();
+	artoriaPendragon.move();
+	for(int i=0; i<numAster; i++)
+	{
+		a.get(i).show();
+		a.get(i).move();
+  }
 }
 public void keyPressed()
 {
