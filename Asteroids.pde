@@ -38,6 +38,14 @@ class Asteroids extends Floater
 		} 
 		super.turn(rockSpeed);
 	}
+	public double getCenterX()
+	{
+		return myCenterX;
+	}
+	public double getCenterY()
+	{
+		return myCenterY;
+	}
 }
 
 		
