@@ -14,8 +14,8 @@ class Asteroids extends Floater
 	     xCorners[2]=-8; //array   
 	     yCorners[2]=8;
 	     myColor=125;   
-	     myCenterX=(int)(Math.random()*500+1);
-	     myCenterY=(int)(Math.random()*500+1); //holds center coordinates   
+	     myCenterX=(int)(Math.random()*width+1);
+	     myCenterY=(int)(Math.random()*height+1); //holds center coordinates   
 	     myDirectionX=(Math.random()*4-2);
 	     myDirectionY=(Math.random()*4-2); //holds x and y coordinates of the vector for direction of travel   
 	     myPointDirection=0; //holds current direction the ship is pointing in degrees  

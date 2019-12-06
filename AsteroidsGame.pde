@@ -3,14 +3,16 @@ Spaceship artoriaPendragon ;
 Star[] circleStar;
 ArrayList <Asteroids> a;
 int numAster;
+ArrayList <Bullet> b;
 public void setup() 
 {
   //your code here
-	  size(500,500);
+	  size(1200,800);
 	  artoriaPendragon = new Spaceship();
-	  circleStar = new Star[500];
-	  numAster=10;
+	  circleStar = new Star[width];
+	  numAster=50;
 	  a = new ArrayList <Asteroids>();
+	  b = new ArrayList <Bullet>();
 	  for(int i=0; i<circleStar.length; i++)
 		{
 			circleStar[i] = new Star();
@@ -24,21 +26,26 @@ public void draw()
 {
   //your code here
 	background(0);
-  for(int i=0; i<circleStar.length; i++)
-  {
- 	circleStar[i].show();
-  }
+	for(int i=0; i<circleStar.length; i++)
+	{
+	circleStar[i].show();
+	}
+	for(int i=0; i<b.size(); i++)
+	{
+	b.get(i).show();
+	b.get(i).move();
+	}
 	artoriaPendragon.show();
 	artoriaPendragon.move();
 	for(int i=0; i<a.size(); i++)
 	{
-		a.get(i).show();
-		a.get(i).move();
+	a.get(i).show();
+	a.get(i).move();
 		if (dist((float)artoriaPendragon.getCenterX(),(float)artoriaPendragon.getCenterY(),(float)a.get(i).getCenterX(),(float)a.get(i).getCenterY())<20)
-  	{
-  		a.remove(i);
-  	}
-  }
+		{
+			a.remove(i);
+		}
+	}
 }
 public void keyPressed()
 {
@@ -93,13 +100,17 @@ public void keyPressed()
 	if(keyCode==72)
 	{
 		artoriaPendragon.setMyPointDirection((double)Math.random()*360+1);
-		artoriaPendragon.setCenterX((int)(Math.random()*500)+1);
-		artoriaPendragon.setCenterY((int)(Math.random()*500)+1);
+		artoriaPendragon.setCenterX((int)(Math.random()*width)+1);
+		artoriaPendragon.setCenterY((int)(Math.random()*height)+1);
 		for(int i=0; i<circleStar.length; i++)
 		{
-			circleStar[i].setStarX((int)(Math.random()*500+1));
-			circleStar[i].setStarY((int)(Math.random()*500+1));
+			circleStar[i].setStarX((int)(Math.random()*width+1));
+			circleStar[i].setStarY((int)(Math.random()*height+1));
 		}
+	}
+	if(keyCode==71)
+	{
+		b.add(new Bullet(artoriaPendragon));
 	}
 	System.out.println(artoriaPendragon.getCenterX());
 
