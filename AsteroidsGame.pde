@@ -34,6 +34,15 @@ public void draw()
 	{
 	b.get(i).show();
 	b.get(i).move();
+		for(int ast=0; ast<a.size(); ast++)
+		{
+			if (dist((float)a.get(ast).getCenterX(),(float)a.get(ast).getCenterY(),(float)b.get(i).getCenterX(),(float)b.get(i).getCenterY())<20)
+			{
+				a.remove(ast);
+				b.remove(i);
+				break;
+			}
+		}
 	}
 	artoriaPendragon.show();
 	artoriaPendragon.move();
@@ -112,7 +121,6 @@ public void keyPressed()
 	{
 		b.add(new Bullet(artoriaPendragon));
 	}
-	System.out.println(artoriaPendragon.getCenterX());
 
 }
 

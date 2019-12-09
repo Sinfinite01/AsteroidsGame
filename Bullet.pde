@@ -21,4 +21,17 @@ class Bullet extends Floater
 		myDirectionX=5 * Math.cos(dRadians) + theShip.getMyDirectionX();
 		myDirectionY=5 * Math.sin(dRadians) + theShip.getMyDirectionY();
 	}
+	public void move ()   //move the floater in the current direction of travel
+	{      
+		myCenterX += myDirectionX;    
+		myCenterY += myDirectionY;       
+	}   
+	public double getCenterX()
+	{
+		return myCenterX;
+	}
+	public double getCenterY()
+	{
+		return myCenterY;
+	}
 }
