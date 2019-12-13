@@ -22,21 +22,8 @@ class Asteroids extends Floater
 	} 
 	public void move()
 	{
-		myCenterX += myDirectionX;    
-    	myCenterY += myDirectionY; 
-		if(myCenterX >width)
-	    {     
-		 	myCenterX = 0;    
-		}    
-		else if (myCenterX<0)
-		{     
-		    myCenterX = width;    
-		}    
-		if(myCenterY >height)
-		{    
-		    myCenterY = 0;    
-		} 
-		super.turn(rockSpeed);
+		super.move();
+		turn(rockSpeed);
 	}
 	public double getCenterX()
 	{
@@ -45,6 +32,14 @@ class Asteroids extends Floater
 	public double getCenterY()
 	{
 		return myCenterY;
+	}
+	public void setMyDirectionX(double a)
+	{
+		myDirectionX=a;
+	}
+	public void setMyDirectionY(double a)
+	{
+		myDirectionY=a;
 	}
 }
 

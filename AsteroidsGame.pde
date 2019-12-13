@@ -4,10 +4,21 @@ Star[] circleStar;
 ArrayList <Asteroids> a;
 int numAster;
 ArrayList <Bullet> b;
+int health;
+int healthCounter;
+int wordCounter;
+int points;
+int level;
+int letters;
+String endGameMessage;
 public void setup() 
 {
   //your code here
 	  size(1200,800);
+	  points=0;
+	  level=1;
+	  letters=0;
+	  wordCounter=0;
 	  artoriaPendragon = new Spaceship();
 	  circleStar = new Star[width];
 	  numAster=50;
@@ -21,6 +32,8 @@ public void setup()
 	  {
 	  	a.add(new Asteroids());
 	  }
+	  healthCounter=1000;
+	  health = 1180;
 }
 public void draw() 
 {
@@ -40,6 +53,7 @@ public void draw()
 			{
 				a.remove(ast);
 				b.remove(i);
+				points+=10;
 				break;
 			}
 		}
@@ -53,8 +67,63 @@ public void draw()
 		if (dist((float)artoriaPendragon.getCenterX(),(float)artoriaPendragon.getCenterY(),(float)a.get(i).getCenterX(),(float)a.get(i).getCenterY())<20)
 		{
 			a.remove(i);
+			health-=100;
+			healthCounter=0;
 		}
 	}
+
+	//score board
+	fill(255);
+	textSize(20);
+	textAlign(LEFT);
+	text("Score: "+ points,10,110,500,30);
+	text("Level: "+ level,10,140,500,30);
+	text("Asteroids Left: " + a.size(),10,170,500,30);
+
+
+	healthCounter++;
+	if (healthCounter<10)
+	{
+		fill(255,0,0);
+		rect(10,10,health,100);
+	}
+	if (health>0&&healthCounter>10)
+	{
+		fill(0,255,0);
+		rect(10,10,health,100);
+	}
+	//level system
+	if(a.size()==0)
+	{
+		level++;
+		for(int i=0; i<numAster*level; i++)
+	  {
+	  	a.add(new Asteroids());
+	  	a.get(i).setMyDirectionX(Math.random()*4*level-(2*level));
+	  	a.get(i).setMyDirectionY(Math.random()*4*level-(2*level));
+	  }
+	}
+
+	endGameMessage="GAME OVER\n" + "Level: " + level + "\nScore: " + points;
+
+	if (health<=0)
+	{
+			wordCounter++;
+			background(0);
+			fill(255);
+			textSize(50);
+			textAlign(CENTER);
+			if (wordCounter>10 & letters<endGameMessage.length())
+			{
+				letters++;
+				wordCounter=0;
+			}
+			text(endGameMessage.substring(0,letters), 600, 300);
+
+
+
+	} 
+
 }
 public void keyPressed()
 {
