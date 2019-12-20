@@ -10,10 +10,10 @@ class Star //note that this class does NOT extend Floater
   	starSize=1+(int)(Math.random()*10);
   	starX=(int)(Math.random()*width);
   	starY=(int)(Math.random()*height);
-    starColor=color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
   }
   public void show()
  	{
+    starColor=color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
  		fill(starColor);
  		noStroke();
  		ellipse(starX,starY,starSize,starSize);
