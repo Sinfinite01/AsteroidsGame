@@ -39,8 +39,8 @@ public void draw()
 {
   //your code here
 	background(0);
-	for(int i=0; i<circleStar.length; i++)
-	{
+ 	for(int i=0; i<b.size(); i++)
+ 	{
 	b.get(i).show();
 	b.get(i).move();
 		for(int ast=0; ast<a.size(); ast++)
